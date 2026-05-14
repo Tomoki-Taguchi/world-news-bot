@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World News Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f172a;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+header{background:#1e293b;padding:14px 20px;border-bottom:1px solid #1e3a5f;position:sticky;top:0;z-index:10}
+header h1{font-size:1.1rem;font-weight:700;color:#f1f5f9}
+.updated{font-size:.72rem;color:#64748b;margin-top:2px}
+main{max-width:1280px;margin:0 auto;padding:24px 16px}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;color:#475569;text-transform:uppercase;margin:32px 0 16px;padding-bottom:8px;border-bottom:1px solid #1e293b}
+.source{margin-bottom:28px}
+.source h2{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.badge{padding:3px 10px;border-radius:4px;font-size:.78rem;font-weight:600}
+.badge-int{background:#1e3a8a;color:#93c5fd}
+.badge-jp{background:#7f1d1d;color:#fca5a5}
+.caution-tag{font-size:.68rem;color:#f87171;background:#450a0a;padding:2px 8px;border-radius:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:12px;text-decoration:none;color:inherit;display:block;transition:border-color .15s}
+.card:hover{border-color:#3b82f6}
+.card-ja{font-size:.88rem;font-weight:600;color:#f1f5f9;margin-bottom:4px}
+.card-en{font-size:.72rem;color:#64748b}
+.jp-card{cursor:default}
+.jp-title{font-size:.88rem;font-weight:600;color:#fca5a5;text-decoration:none;display:block;margin-bottom:6px}
+.jp-title:hover{text-decoration:underline}
+.related{margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
+.rel-label{font-size:.7rem;color:#6ee7b7;display:block;margin-bottom:4px}
+.rel-item{display:block;font-size:.7rem;color:#93c5fd;text-decoration:none;margin-top:3px;line-height:1.4}
+.rel-item:hover{text-decoration:underline}
+.rel-src{font-weight:700}
+.only-jp{display:inline-block;font-size:.68rem;color:#f87171;background:#450a0a;padding:2px 8px;border-radius:4px;margin-top:6px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🌍 World News Dashboard</h1>
+  <div class="updated">最終更新: 2026年05月14日 21:48 JST</div>
+</header>
+<main>
+  <div class="section-label">🌐 国際報道</div>
+  
+    <section class="source">
+      <h2><span class="badge badge-int">Reuters</span></h2>
+      <div class="grid">
+    <a class="card" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxPb2NFdlk1aWJ5RXY5d1ZQZVFsTDMySGdtQTl0NE1PTjNVek02NXVQY1prMktwZWlRNDNOYVdxdW5MdFJ2czQyMHpCZjdzVlI0VlVKeWlhTkpzSjRMZ3doT1ZtNHNlQktOR1Zzb2lFQTJVZFRaUktsWHJMUUNZc1FTVmo4cjRKOG5HSjlHVFgzTG04Z3JiTWgxUDZrRnFFYkJjNTlCelptZW9CcVRXTy0xaURLZnVtNE1IeXA1NU9uZmI1dkI1YWtFRg?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">米財務省のベッセント氏、中国訪問中にボーイングからの大量発注を期待</div>
+      <div class="card-en">US Treasury&#x27;s Bessent expects large Boeing order during China visit</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNlVTeXkwT2hvRVpId3B5cnl0SWVwLTBBRDNhSnlPQkdERXdqZnNJNXA3bFo3dnMxWWtqYUstR1B0dDM3cjF2c3NqTWt2b1pfUlpfVkduVmNORlZTMXNqbEFldk9vdGpLdnNaaGpMaUlKdWVqazMwQnhYNE5MVjV5OWVEeVZ0SW92NXdpX2lQVEV3YnR6VUhHRFhVa2RIY0huaW15QkxRV1lzSXhYR2FxTXY2dl9HWWFx?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">イラン、ホルムズ海峡で中国船舶の通航を許可、ファルス通信が報じた</div>
+      <div class="card-en">Iran allowing transit of Chinese vessels in Strait of Hormuz, Fars news reports</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxOZDk5YnlQOVBsanZaR2ZEcTNlUkZlc2swaFJYcERIdk1IVmplc3ExYU0wVGNlYV90d3dPZHZNWlppTnoxS1JxczJjUUdVX2lnOXdaZEhVSktSaTlFT1VaRHdiLVgtd2dhVVVZbHVDMmFuZTV4TnlEQ1VfZkdYZngwWFZ6ZkQzWGw2YURPUzI5QXg0R0k?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">トランプ大統領、9月24日に習主席をホワイトハウスに招待</div>
+      <div class="card-en">Trump invites Xi to White House on September 24</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOck5sSTR3MEhWMC1ydmZQSG1vMEdBdmpxT2lLUkY1Q0hoeDZTLVA5ajQyVUkzUDRJb0lUZ3JOYWhRV2oxWHNtb1dUaVlMYllTX2N6OTZSLVUwOGxfTlFsWUppS0hxMVRwNUxpR2x5MTg0dllRS0dQT2VMb1NvVGRzM1ZIZ3h2QlVjQUs2VGtyQW1wM3A0RjVEUjZ2RTY3NVZlSm56RFBIbmlzVUVIX1ZSNWN0SU83Y013Qnc?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">米上院委員会、デジタル資産の節目として暗号法案を検討へ</div>
+      <div class="card-en">US Senate committee to weigh crypto bill in milestone for digital assets</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcGdNQlQ4NFRJcnlwVVRyTTBFNk9oSWN2elQ3MkljaTU1VzhOWVBhWFJZZ1JydnBPVzFza1VOUDNTYkExN3k5YTNSNk85NnFtX0FTTFp3ck5fNzhUV21jVEdDbl8xd2FRZWFSN0k0OVJrdmhYb2lQNElrNl9ieXV4RERUN2VaREVCaHdpU19VNldGZXo0T2lnUUQzRkRad3NmT2MtUUtIREJ5TlBjZVpaa0RuLWE3allOdGh4OWp5dkhsNEk?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">ローマ法王レオ、欧州の軍事支出を外交への「裏切り」と非難</div>
+      <div class="card-en">Pope Leo decries European military spending as &#x27;betrayal&#x27; of diplomacy</div>
+    </a></div>
+    </section>
+    <section class="source">
+      <h2><span class="badge badge-int">AP News</span></h2>
+      <div class="grid">
+    <a class="card" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxORk81MS1tTmdsOERDYXI5U0F4MmVxNS1MVjMyVW1lRkg3ZEx0U0RoWEotN25xZWpoaUlWWXlpeEVhTDIyZGpjM3BjNmRiV3VmX1NaNzFXWWg5NG4zWVNYZjJucVFsTW8tb1NlODN2LWpJZHVUeml0ZmJSUU0yLUtSSEpUeXp3bXlBNkp3eUk3WmgwYzA?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">上院、トランプ氏がパウエル氏に続きウォーシュ氏をFRB議長に指名することを承認</div>
+      <div class="card-en">Senate confirms Trump pick Warsh as chairman of the Federal Reserve, following Powell</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNMnJadUp3aVhpSTJORmhWczF0ZmYydURqbkE3WnlTcmlFd1g1bkdReVh2aUxVRUxLd1hnQmpLcmpwN2Y2NGJhbXdBa1RRUWpOcHdQYXJGMVZLeGIwby1WV09XT3RVbHlHODMyT1RmLXpQWjczbnYzTXBhcEo4bWxYMVpuQWhqeDNtVk5lcWlXdnd4MHZBZTV5aGp5d2RGcHpiZjlF?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">船はUAE沖で拿捕され、イランに向かっていると報じられている</div>
+      <div class="card-en">Ship is reported seized off the coast of the UAE and is heading toward Iran</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNVTJyM2FEQVIzNXlBNVNWeGNKOGE5MFlMczF4bTN2dlBYUl9RMXdQaXF0Y2RsZEEtd3ROWWNtUDY5aGtsNzdGclVSNnNxcmI5emRwdWU5REIxQ2R4b0dnVm10dHpfNmNONGNUMkZmX0dKOWN6MWtwU0lyZ3FvZUJkWUltVE51dVlhVHlySmJ1WjNCcTB6S0E?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">イラン戦争でインク供給が枯渇し、日本のスナック菓子のパッケージの一部が白黒になっている</div>
+      <div class="card-en">Some Japanese snack packages are turning black-and-white as Iran war depletes ink supply</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQTlNjRUYwR29UMmE2enp4eVNWR19FaHhPQXVRa010cmZ6RjRhS0ppU2xJQndreUZKWVpPZEpkTHdVRzV2U3BCS3JmbGtxQ0hSc25aRlpiQk5kTEpRdlI3SG5MMkRma05nXzVEMDVWaHBLeTlkX0JVUUNOc3Z3amJ1bE9STVFxbkw5djF0LUJQNHlRTjNTQzh6Q29PNA?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">高等裁判所が有罪判決を覆した後、検察は妻と息子の死でアレックス・マードーを再審理する</div>
+      <div class="card-en">Prosecutors to retry Alex Murdaugh in deaths of wife and son after high court overturned convictions</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNUTQ0alAwNGZVLTRsd0xyQ1h0V0pHdXk4dmxaaUw5TGR1ZnJEUnlFWk55dUJueUI2cG5JWWcxYVdoeTV1b3I1RklmSlJKYVFzUVdhZXBIN3ViTWF3LVZqUVQ4anBoVTM2OGVQRGdPMk0zVEFnZm5lV29sRDFWWXhxUVNpUjVPX2VCWnFvc0VOOGs3NV83ME85bG44QTljSkJnTUVVdg?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">辞任を求める声が高まり、数人の閣僚が辞任する中、英国のスターマー氏は反抗的</div>
+      <div class="card-en">UK’s Starmer defiant as calls for his resignation grow and several ministers quit</div>
+    </a></div>
+    </section>
+    <section class="source">
+      <h2><span class="badge badge-int">Financial Times</span></h2>
+      <div class="grid">
+    <a class="card" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxObmF2b2hSRGItM0NlVkk4SmtzOE5xRmIwdmtYdXNTN0NqRWFsNlNTbnhTblIxLURPdWpTUTVXckpNRFhNOUE4RkpJWlhpWG14Z2ZEbGMyRm4tZHZsdWc3RG9CemFTSjl6YmRwZ0p4bVNsMTNJUTFZUEdCYmk5OFdtOWY1aTQ?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">米中関係は台湾に依存、習近平はドナルド・トランプに警告</div>
+      <div class="card-en">US-China relations depend on Taiwan, Xi Jinping warns Donald Trump</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNSlA3WmlWU29nd0pHemZBVWY0THdjNXRCN0lkQXpyQ3hDcjFxUkFndWFEYUl1eW12MkNuQklCRHZqWVlNWTZrUV9aM0VCbzZmZHJPRkg4a2NoV3BjY01JbWJkYzI0TUxKengyUHdXdE96cDgxT1FLem5uSlFQZV9hRXp6cGU?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">イングランド銀行、業界の圧力を受けてステーブルコインのルールを緩和する予定</div>
+      <div class="card-en">Bank of England set to water down stablecoin rules after industry pressure</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNVFVYaUpLZm1FTXJidEd0VVNrNEJDNkFZb09ucnQtRkJfREpvZk1lZXV5ZmlYb195M1FfWnE1SjhLVkFxNk5FTy1uWE83VHpQblhoVWhiOHhJd1R0Yl9sNGp4eFRfaXhBQmJiUUtpTlNib3JIelJ2aHNoXy13NlNDYVBubms?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">ディスカウント小売店アクションの売上伸び鈍化を受け、3i株急落</div>
+      <div class="card-en">3i shares tumble after sales growth slows at discount retailer Action</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNUWgyVENkdHc5S3ZXcV9jSlA1bkNwTENDalRCNzBoNmlzTGRhMzF0S1ZVSnJydHA4TVhXVHlNbVNYMngyazdLOXRaUUFRM0FPMm9oVFFGSFh4a0c3c2dnZXR4S2tyTGNHTFhpMmxBdm5lQzJKQVZLbGxkWTlqTm55ejdSWHE?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">高級品業界の多くの矛盾</div>
+      <div class="card-en">The luxury industry’s many contradictions</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNWFhaTmVVclpMUUhhOGlJQk1lVXZ2eHJHdzdXcVJ1UjdrYTZtLUxVMVBkX3gtd2JJUS1qakh6VG5DQ0Mtb3dLaTQxZ2FocnQ5ZFV2bDVodFFqVkdTUnU4WlJJMHZaZzZsV3ZDdkUteEoydEMyZ0lYVlo1VFhRSFYtdWgyM1k?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">習近平はエヌビディア、テスラ、アップルのCEOに中国は「より広く開放する」と語る</div>
+      <div class="card-en">Xi Jinping tells Nvidia, Tesla and Apple CEOs that China will ‘open wider’</div>
+    </a></div>
+    </section>
+    <section class="source">
+      <h2><span class="badge badge-int">Bloomberg</span></h2>
+      <div class="grid">
+    <a class="card" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOV21tOHNYaGpNYjUyOHBLclVVTWV4NExEWmJnWVJ6TnVHUi1EVFRoWUpjVk5DU2tXRjRMSEtpSlIwR0Z1MmFCZ2xNRExjdm1jb2lKZXZiLV9pMXQ1V0pwU2xheldRdHNXc01rdEtaRmFLS1FJNEU1TmxoanM1czdTdVUtUEZIUmJNWFY0M3ZpRlVuYVk4aHV0TW5BT0NjVm1NdUN6UW5aZUhhaFdWX2pVRDZYVQ?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">トゥキディデスの罠とは何ですか?なぜ習主席はトランプとともにそれを引き起こしたのでしょうか?</div>
+      <div class="card-en">What Is The Thucydides Trap and Why Did Xi Raise It With Trump?</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOT3huMUJqODR0aXJlcnlNQ1g1Mzh4V1A1eVBVTlhXN00tbzBpXzdlQnp5YU1DSVo0c2dIRWxiRjhxZHg1QzRZOVRjU2RLemFGa0taRUx5aVBxSWFJemJ3eWZIZFQ3aktsdnNBeENyQ014UzBzSzk2UGFJRjg2eE54YzNxZ2xXXzJycFJFT0VpZkhkSDlUaGk1MXk5TVU3blFaWHZmZEdhc3RPNVBv?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">習氏とトランプ氏の会談で中国、米国産牛肉工場の輸入許可を更新</div>
+      <div class="card-en">China Renews Import Permits for US Beef Plants as Xi, Trump Meet</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxPYTFQdThxMHVmVG8xaHBhZk0xUWZobVJFeWVIdWdNTUNFdWdNb2FPWThDTFR6bzhiQ3FOZnJCajdubmVCWldMMEYtVk4zTzBFR3lnZmJyOC10dmhYQlJUZENoYkp2NThZcUhwNmhGVXFNTW1MY2FWdVVCcjNhazRMeXR4XzFydUVlY19HVVlWOGh3RVAtMDZpbnlLUUhmaElwTVg2M3lxWWpvTjVJaFE?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">ベッセント氏、米国と中国が「投資委員会」について話し合っていると語る</div>
+      <div class="card-en">Bessent Says US, China Discussing ‘Board of Investment’</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPT0dtMW5BT1l6bllCcVBYa21UMVgyLWxYdFpkM1RiaDRCMVUxTHd5ZldrZnVNSE44V09HMmpPMFZieDRrbDBURC1CZFU2dllyRGpEbzFXeWdaRHlpSHBPc1hZOHY5NS0zY3gyVGl3OVZxNmpaalN0bHFPQ1VMRnM4M3RLemRDRXhWT1B4aVJUcW42UjFZMm5Dc0FhcE1aTmZXOWJwTlZNWDV6NHJzckkxeUMtZVY?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">米国、中国は中東への依存を減らすために石油の増量を望んでいると発言</div>
+      <div class="card-en">US Says China Wants More Of Its Oil to Cut Middle East Reliance</div>
+    </a>
+    <a class="card" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPU29OY0pyOG9IVFhKdzJsQ3p5NGFwNmw2NHVVU1JOMHFiUF8zRnZJSkdCZ2dHLUw5ckpoS1VGMEdIcGtEcWswN19nTDlIZ1lEQTNVRnV3MXRDTzlfdXhBeFFCODhYVWd1WVllUlRiMThyX1MxdDZnOGxuYTFLRTlIQVRTcG85S0xwRlRfQVNjWi10VHBCVVNmblk2MGMwc0M4VFcxQllFZ1kwYmlDVVFueG9EQTFWUQ?oc=5" target="_blank" rel="noopener">
+      <div class="card-ja">習主席、トランプ大統領に同行する米国のCEOらに対し、中国はさらに開放すると語る</div>
+      <div class="card-en">Xi Tells US CEOs Accompanying Trump That China Will Open Up More</div>
+    </a></div>
+    </section>
+    <section class="source">
+      <h2><span class="badge badge-int">BBC</span></h2>
+      <div class="grid">
+    <a class="card" href="https://www.bbc.com/news/articles/c1w28qw1e0xo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+      <div class="card-ja">トランプ大統領が習氏との一か八かの会談のため中国入り、貿易、イラン、台湾が議題に</div>
+      <div class="card-en">Trade, Iran and Taiwan on the agenda as Trump arrives in China for high-stakes talks with Xi</div>
+    </a>
+    <a class="card" href="https://www.bbc.com/news/articles/c0j296392j1o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+      <div class="card-ja">ナイジェリア元大臣、異例の汚職判決で懲役75年の実刑判決</div>
+      <div class="card-en">Former Nigerian minister sentenced to 75 years in rare corruption verdict</div>
+    </a>
+    <a class="card" href="https://www.bbc.com/news/articles/cwy21k5917jo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+      <div class="card-ja">ラトビア首相、ウクライナの無人偵察機迷走問題で辞任</div>
+      <div class="card-en">Latvian PM resigns after row over stray Ukrainian drones</div>
+    </a>
+    <a class="card" href="https://www.bbc.com/news/articles/cq5p8yygq94o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+      <div class="card-ja">ロシアの大規模攻撃後、救助隊員がキエフのアパートの瓦礫の中から死者を引き上げる</div>
+      <div class="card-en">Rescuers pull dead from rubble of Kyiv flats after massive Russian strikes</div>
+    </a>
+    <a class="card" href="https://www.bbc.com/news/articles/cedpvnq7wn1o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+      <div class="card-ja">裁判所、アレックス・マードーの殺人有罪判決を取り消し、再裁判を命じる</div>
+      <div class="card-en">Court overturns Alex Murdaugh&#x27;s murder convictions and orders new trial</div>
+    </a></div>
+    </section>
+  <div class="section-label">🇯🇵 国内報道（参考程度）</div>
+  
+    <section class="source">
+      <h2><span class="badge badge-jp">🇯🇵 Yahoo!ニュース</span> <span class="caution-tag">参考程度</span></h2>
+      <div class="grid">
+    <div class="card jp-card">
+      <a class="card-ja jp-title" href="https://news.yahoo.co.jp/pickup/6580161?source=rss" target="_blank" rel="noopener">習氏夫妻をホワイトハウスに招待</a>
+      <div class="related"><span class="rel-label">🌍 海外でも報道：</span><a class="rel-item" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxOZDk5YnlQOVBsanZaR2ZEcTNlUkZlc2swaFJYcERIdk1IVmplc3ExYU0wVGNlYV90d3dPZHZNWlppTnoxS1JxczJjUUdVX2lnOXdaZEhVSktSaTlFT1VaRHdiLVgtd2dhVVVZbHVDMmFuZTV4TnlEQ1VfZkdYZngwWFZ6ZkQzWGw2YURPUzI5QXg0R0k?oc=5" target="_blank" rel="noopener"><span class="rel-src">Reuters</span> Trump invites Xi to White House on September 24</a></div>
+    </div>
+    <div class="card jp-card">
+      <a class="card-ja jp-title" href="https://news.yahoo.co.jp/pickup/6580164?source=rss" target="_blank" rel="noopener">各地で天気急変 横浜では冠水被害</a>
+      <div class="only-jp">🇯🇵 国内のみ</div>
+    </div>
+    <div class="card jp-card">
+      <a class="card-ja jp-title" href="https://news.yahoo.co.jp/pickup/6580158?source=rss" target="_blank" rel="noopener">自転車で同乗の子 範囲拡大検討へ</a>
+      <div class="only-jp">🇯🇵 国内のみ</div>
+    </div>
+    <div class="card jp-card">
+      <a class="card-ja jp-title" href="https://news.yahoo.co.jp/pickup/6580157?source=rss" target="_blank" rel="noopener">女性殴られ死亡 強盗殺人疑い逮捕</a>
+      <div class="only-jp">🇯🇵 国内のみ</div>
+    </div>
+    <div class="card jp-card">
+      <a class="card-ja jp-title" href="https://news.yahoo.co.jp/pickup/6580166?source=rss" target="_blank" rel="noopener">神奈川県教委 教諭5人を懲戒免職</a>
+      <div class="only-jp">🇯🇵 国内のみ</div>
+    </div>
+    <div class="card jp-card">
+      <a class="card-ja jp-title" href="https://news.yahoo.co.jp/pickup/6580163?source=rss" target="_blank" rel="noopener">ニデック「記念館」計画中止検討</a>
+      <div class="only-jp">🇯🇵 国内のみ</div>
+    </div>
+    <div class="card jp-card">
+      <a class="card-ja jp-title" href="https://news.yahoo.co.jp/pickup/6580155?source=rss" target="_blank" rel="noopener">高校不合格です 発表前の電話廃止</a>
+      <div class="only-jp">🇯🇵 国内のみ</div>
+    </div>
+    <div class="card jp-card">
+      <a class="card-ja jp-title" href="https://news.yahoo.co.jp/pickup/6580151?source=rss" target="_blank" rel="noopener">アンガ田中に第1子 山根は驚き</a>
+      <div class="only-jp">🇯🇵 国内のみ</div>
+    </div></div>
+    </section>
+</main>
+</body>
+</html>
