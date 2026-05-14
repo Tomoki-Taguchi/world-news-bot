@@ -1,0 +1,40 @@
+name: World News Bot
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # 朝9時 JST
+    - cron: '0 3 * * *'   # 昼12時 JST
+    - cron: '0 12 * * *'  # 夜21時 JST
+    - cron: '0 * * * *'   # 毎時・速報チェック
+  workflow_dispatch:       # 手動実行ボタン
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Determine mode
+        id: mode
+        run: |
+          HOUR=$(date -u +%H)
+          MINUTE=$(date -u +%M)
+          if [ "$HOUR" = "00" ] || [ "$HOUR" = "03" ] || [ "$HOUR" = "12" ]; then
+            echo "mode=regular" >> $GITHUB_OUTPUT
+          else
+            echo "mode=breaking" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run news bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MODE: ${{ steps.mode.outputs.mode }}
+        run: python news_bot.py
