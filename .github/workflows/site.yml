@@ -1,0 +1,32 @@
+name: Update News Site
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # 3時間ごとに更新
+  workflow_dispatch:        # 手動実行ボタン
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests deep-translator
+
+      - name: Generate site
+        run: python generate_site.py
+
+      - name: Commit and push
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add docs/
+          git diff --staged --quiet || git commit -m "chore: update news $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
