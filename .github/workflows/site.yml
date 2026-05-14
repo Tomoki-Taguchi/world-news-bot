@@ -2,7 +2,7 @@ name: Update News Site
 
 on:
   schedule:
-    - cron: '0 */3 * * *'  # 3時間ごとに更新
+    - cron: '0 * * * *'  # 1時間ごとに更新
   workflow_dispatch:        # 手動実行ボタン
 
 jobs:
