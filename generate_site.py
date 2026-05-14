@@ -50,6 +50,38 @@ JP_EN_MAP = {
 }
 
 
+MEDIA_NS = 'http://search.yahoo.com/mrss/'
+
+
+def extract_image(item):
+    # media:content
+    el = item.find(f'{{{MEDIA_NS}}}content')
+    if el is not None:
+        url = el.get('url', '')
+        if url:
+            return url
+    # media:thumbnail
+    el = item.find(f'{{{MEDIA_NS}}}thumbnail')
+    if el is not None:
+        url = el.get('url', '')
+        if url:
+            return url
+    # enclosure
+    el = item.find('enclosure')
+    if el is not None and (el.get('type', '').startswith('image')):
+        url = el.get('url', '')
+        if url:
+            return url
+    # img tag inside description
+    desc = item.findtext('description', '')
+    if '<img' in desc:
+        import re
+        m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', desc)
+        if m:
+            return m.group(1)
+    return None
+
+
 def fetch_rss(url, limit=8):
     headers = {'User-Agent': 'Mozilla/5.0 (compatible; NewsDashboard/1.0)'}
     r = requests.get(url, headers=headers, timeout=15)
@@ -61,7 +93,8 @@ def fetch_rss(url, limit=8):
         link = item.findtext('link', '').strip()
         if ' - ' in title:
             title = title.rsplit(' - ', 1)[0]
-        items.append({'title': title, 'link': link})
+        image = extract_image(item)
+        items.append({'title': title, 'link': link, 'image': image})
     return items
 
 
@@ -85,13 +118,23 @@ def find_related(jp_title, int_articles_flat):
     return related[:3]
 
 
+def img_html(image):
+    if not image:
+        return ''
+    src = html.escape(image)
+    return f'<img class="card-img" src="{src}" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
+
+
 def card_int(article):
     ja = translate(article['title'])
     link = html.escape(article.get('link', '#'))
     return f'''
     <a class="card" href="{link}" target="_blank" rel="noopener">
-      <div class="card-ja">{html.escape(ja)}</div>
-      <div class="card-en">{html.escape(article["title"])}</div>
+      {img_html(article.get("image"))}
+      <div class="card-body">
+        <div class="card-ja">{html.escape(ja)}</div>
+        <div class="card-en">{html.escape(article["title"])}</div>
+      </div>
     </a>'''
 
 
@@ -108,8 +151,11 @@ def card_jp(article, related):
 
     return f'''
     <div class="card jp-card">
-      <a class="card-ja jp-title" href="{link}" target="_blank" rel="noopener">{html.escape(article["title"])}</a>
-      {rel_html}
+      {img_html(article.get("image"))}
+      <div class="card-body">
+        <a class="card-ja jp-title" href="{link}" target="_blank" rel="noopener">{html.escape(article["title"])}</a>
+        {rel_html}
+      </div>
     </div>'''
 
 
@@ -156,12 +202,15 @@ main{{max-width:1280px;margin:0 auto;padding:24px 16px}}
 .badge-jp{{background:#7f1d1d;color:#fca5a5}}
 .caution-tag{{font-size:.68rem;color:#f87171;background:#450a0a;padding:2px 8px;border-radius:4px}}
 .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}}
-.card{{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:12px;text-decoration:none;color:inherit;display:block;transition:border-color .15s}}
+.card{{background:#1e293b;border:1px solid #334155;border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:border-color .15s}}
 .card:hover{{border-color:#3b82f6}}
+.card-img{{width:100%;height:160px;object-fit:cover;display:block}}
+.card-body{{padding:12px}}
 .card-ja{{font-size:.88rem;font-weight:600;color:#f1f5f9;margin-bottom:4px}}
 .card-en{{font-size:.72rem;color:#64748b}}
 .jp-card{{cursor:default}}
 .jp-title{{font-size:.88rem;font-weight:600;color:#fca5a5;text-decoration:none;display:block;margin-bottom:6px}}
+.jp-card .card-body{{padding:12px}}
 .jp-title:hover{{text-decoration:underline}}
 .related{{margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}}
 .rel-label{{font-size:.7rem;color:#6ee7b7;display:block;margin-bottom:4px}}
