@@ -15,6 +15,10 @@ INT_SOURCES = {
     'BBC':             'https://feeds.bbci.co.uk/news/world/rss.xml',
 }
 
+SNS_SOURCES = {
+    'Togetter': 'https://togetter.com/rss/hot',
+}
+
 JP_SOURCES = {
     'Yahoo!ニュース': 'https://news.yahoo.co.jp/rss/topics/top-picks.xml',
 }
@@ -159,7 +163,7 @@ def card_jp(article, related):
     </div>'''
 
 
-def build_html(int_news, jp_news, int_articles_flat):
+def build_html(int_news, sns_news, jp_news, int_articles_flat):
     now = datetime.now(JST)
     updated = now.strftime('%Y年%m月%d日 %H:%M JST')
 
@@ -169,6 +173,15 @@ def build_html(int_news, jp_news, int_articles_flat):
         int_section += f'''
     <section class="source">
       <h2><span class="badge badge-int">{html.escape(source)}</span></h2>
+      <div class="grid">{cards}</div>
+    </section>'''
+
+    sns_section = ''
+    for source, articles in sns_news.items():
+        cards = ''.join(card_int(a) for a in articles[:8])
+        sns_section += f'''
+    <section class="source">
+      <h2><span class="badge badge-sns">💬 {html.escape(source)}</span></h2>
       <div class="grid">{cards}</div>
     </section>'''
 
@@ -199,6 +212,7 @@ main{{max-width:1280px;margin:0 auto;padding:24px 16px}}
 .source h2{{display:flex;align-items:center;gap:8px;margin-bottom:10px}}
 .badge{{padding:3px 10px;border-radius:4px;font-size:.78rem;font-weight:600}}
 .badge-int{{background:#1e3a8a;color:#93c5fd}}
+.badge-sns{{background:#4a1d96;color:#c4b5fd}}
 .badge-jp{{background:#7f1d1d;color:#fca5a5}}
 .caution-tag{{font-size:.68rem;color:#f87171;background:#450a0a;padding:2px 8px;border-radius:4px}}
 .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}}
@@ -228,6 +242,8 @@ main{{max-width:1280px;margin:0 auto;padding:24px 16px}}
 <main>
   <div class="section-label">🌐 国際報道</div>
   {int_section}
+  <div class="section-label">💬 SNS・まとめ（日本語）</div>
+  {sns_section}
   <div class="section-label">🇯🇵 国内報道（参考程度）</div>
   {jp_section}
 </main>
@@ -248,6 +264,14 @@ def main():
         except Exception as e:
             print(f'✗ {source}: {e}')
 
+    sns_news = {}
+    for source, url in SNS_SOURCES.items():
+        try:
+            sns_news[source] = fetch_rss(url, limit=10)
+            print(f'✓ {source}: {len(sns_news[source])} articles')
+        except Exception as e:
+            print(f'✗ {source}: {e}')
+
     jp_news = {}
     for source, url in JP_SOURCES.items():
         try:
@@ -258,7 +282,7 @@ def main():
 
     os.makedirs('docs', exist_ok=True)
     with open('docs/index.html', 'w', encoding='utf-8') as f:
-        f.write(build_html(int_news, jp_news, int_flat))
+        f.write(build_html(int_news, sns_news, jp_news, int_flat))
     print('✓ Site generated: docs/index.html')
 
 
