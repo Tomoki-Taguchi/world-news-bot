@@ -1,11 +1,6 @@
 name: World News Bot
 
 on:
-  schedule:
-    - cron: '0 0 * * *'   # 朝9時 JST
-    - cron: '0 3 * * *'   # 昼12時 JST
-    - cron: '0 12 * * *'  # 夜21時 JST
-    - cron: '0 * * * *'   # 毎時・速報チェック
   workflow_dispatch:       # 手動実行ボタン
 
 jobs:
